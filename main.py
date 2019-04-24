@@ -9,7 +9,34 @@ import sys
 def MainMenu():
     # Layout the design of the GUI      
     sg.SetOptions(text_color="black", font='Arial',border_width=0)
-    sg.ChangeLookAndFeel("dark")
+    sg.ChangeLookAndFeel("black")
+
+    layout = [
+                [sg.Text('Please select a function', auto_size_text=True)],  
+                [sg.Text('1. Team menu', auto_size_text=True)],
+                [sg.Text('2. Individual menu', auto_size_text=True)],
+                [sg.Button('1'), sg.Button('2'),sg.Quit()]]      
+    # Show the Window to the user    
+    window = sg.Window('Main Menu', no_titlebar=True).Layout(layout)      
+     # Event loop. Read buttons, make callbacks      
+    while True:      
+        # Read the Window    
+      event, value = window.Read()      
+        # Take appropriate action based on button      
+      if event == '1':      
+            TeamsMenu()  #Opens menu for teams
+      elif event == '2':      
+            IndividualMenu() #Opens up menu for individual competitors
+      elif event =='Quit'  or event is None:  
+            window.Close()    
+            break      
+    
+        # All done!      
+    sg.PopupOK('Done')
+#==============================================================================
+#==============================================================================
+#==============================================================================
+def TeamsMenu():
 
     layout = [
                 [sg.Text('Please select a function', auto_size_text=True)],  
@@ -102,6 +129,7 @@ def AddResults():
     
         writer.writerow(fields)
 #==============================================================================
+#def resultsMenu():
 
 
 #==============================================================================
@@ -131,4 +159,8 @@ def CreateRankList():
 
     sys.exit(69)
 #==============================================================================
+#==============================================================================
+#==============================================================================
+
+
 MainMenu()
