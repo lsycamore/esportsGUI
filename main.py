@@ -12,7 +12,6 @@ def MainMenu():
     sg.ChangeLookAndFeel("dark")
 
     layout = [
-                [sg.Button('1'), sg.Button('2'), sg.Button('3'), sg.Button('4'),sg.Quit()],
                 [sg.Text('Please select a function', auto_size_text=True)],  
                 [sg.Text('1. Create a team', auto_size_text=True)],
                 [sg.Text('2. Add results', auto_size_text=True)],
