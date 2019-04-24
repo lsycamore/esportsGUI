@@ -17,7 +17,7 @@ def MainMenu():
                 [sg.Text('1. Create a team', auto_size_text=True)],
                 [sg.Text('2. Add results', auto_size_text=True)],
                 [sg.Text('3. View results', auto_size_text=True)],
-                [sg.Text('3. View ranked list', auto_size_text=True)],
+                [sg.Text('4. View ranked list', auto_size_text=True)],
                 [sg.Button('1'), sg.Button('2'), sg.Button('3'), sg.Button('4'),sg.Quit()]]      
     # Show the Window to the user    
     window = sg.Window('Main Menu', no_titlebar=True).Layout(layout)      
