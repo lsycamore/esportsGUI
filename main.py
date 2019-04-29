@@ -87,7 +87,7 @@ def CreateTeam():
     window.Close()
     file_exists = os.path.isfile("teams.csv")
     with open("teams.csv", "a") as csvfile:
-        colnames = ["_TeamName_", "_member1_","_member2_","_member3_","_member4_","_member5_",]
+        colnames = ["_TeamName_", "_member1_","_member2_","_member3_","_member4_","_member5_","_points_",]
         writer = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
         fields = [values['_TeamName_'], values['_member1_'], values['_member2_'],values['_member3_'], values['_member4_'], values['_member5_']]
@@ -131,8 +131,33 @@ def AddResults():
    # with open("teams.csv", "w+") as csvfile:
 
 #==============================================================================
-#def resultsMenu():
+def ResultsMenu():
+    sg.SetOptions(auto_size_buttons=True)
+    # --- populate table with file contents --- #
+    dir = os.path.dirname(os.path.realpath(__file__))+r"\teams.csv"
+    data = []
+    header_list = []
+    
 
+    try:
+        df = pd.read_csv(dir, sep=',', engine='python',header=None)  # Header=None means you directly pass the columns names to the dataframe
+        teams = df[['_TeamName_','_points_']]
+        results=teams.sort_values("_points_")
+        data = results.values.tolist()               # read everything else into a list of rows
+        header_list = results.iloc[0].tolist()   # Uses the first row (which should be column names) as columns names
+        data = results[1:].values.tolist()    
+    except:
+        sg.PopupError('Error reading file')
+        sys.exit(69)
+  
+
+    layout = [[sg.Table(values=data, headings=header_list, display_row_numbers=True,
+                            auto_size_columns=False, num_rows=min(25,len(data)))]]
+
+    window = sg.Window('Table', grab_anywhere=False)
+    event, values = window.Layout(layout).Read()
+
+    sys.exit(69)
 
 #==============================================================================
 def CreateRankList():
@@ -159,7 +184,7 @@ def CreateRankList():
     window = sg.Window('Table', grab_anywhere=False)
     event, values = window.Layout(layout).Read()
 
-    sys.exit(69)
+
 #==============================================================================
 #==============================================================================
 #==============================================================================
