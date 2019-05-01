@@ -1,4 +1,4 @@
-
+import main as mn
 import PySimpleGUI as sg
 import csv
 import os.path
@@ -32,7 +32,8 @@ def tmenu():
       elif event == '4':
             CreateRankList()
       elif event =='Quit'  or event is None:  
-            window.Close()    
+            window.Close()
+            mn.MainMenu()
             break      
     
         # All done!      
