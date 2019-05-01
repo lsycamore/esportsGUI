@@ -1,4 +1,4 @@
-from main import main
+
 import PySimpleGUI as sg
 import csv
 import os.path
@@ -7,7 +7,7 @@ import howdoi
 import sys
 
 #==============================================================================
-def TeamsMenu():
+def tmenu():
 
     layout = [
                 [sg.Text('Please select a function', auto_size_text=True)],  
