@@ -1,4 +1,4 @@
-import main as mn
+
 import PySimpleGUI as sg
 import csv
 import os.path
