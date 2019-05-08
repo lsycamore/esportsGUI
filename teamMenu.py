@@ -111,15 +111,17 @@ def ResultsMenu():
     
 
     try:
-        df = pd.read_csv(dir, sep=',', engine='python',header=None)  # Header=None means you directly pass the columns names to the dataframe
-        teams = df[['_TeamName_','_points_']]
-        results=teams.sort_values("_points_")
-        data = results.values.tolist()               # read everything else into a list of rows
-        header_list = results.iloc[0].tolist()   # Uses the first row (which should be column names) as columns names
-        data = results[1:].values.tolist()    
+        df = pd.read_csv(dir, sep=',', engine='python', header=None)  # Header=None means you directly pass the columns names to the dataframe
+        data = df.values.tolist()               # read everything else into a list of rows
+        header_list = df.iloc[0].tolist()   # Uses the first row (which should be column names) as columns names
+        data = df[1:].values.tolist()       # Drops the first row in the table (otherwise the header names and the first row will be the same)
     except:
         sg.PopupError('Error reading file')
         sys.exit(69)
+
+    layout = [[sg.Table(values=data, headings=header_list, display_row_numbers=True,
+                            auto_size_columns=False, num_rows=min(25,len(data)))]]
+
   
 
     layout = [[sg.Table(values=data, headings=header_list, display_row_numbers=True,
