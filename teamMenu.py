@@ -9,6 +9,7 @@ import sys
 #==============================================================================
 def tmenu():
 
+    
     layout = [
                 [sg.Text('Please select a function', auto_size_text=True)],  
                 [sg.Text('1. Create a team', auto_size_text=True)],
