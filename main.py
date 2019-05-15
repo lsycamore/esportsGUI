@@ -11,14 +11,7 @@ import individualMenu as im #imports .py file which contains individual menu
 def MainMenu():
     # Layout the design of the GUI      
  #   sg.SetOptions(text_color="black", font='Arial',border_width=0)
-    sg.SetOptions(background_color='#FFFFFF',      
-           text_element_background_color='#FFFFFF',      
-           element_background_color='#9FB8AD',      
-           scrollbar_color='#FFFFFF',      
-           input_elements_background_color='#F7F3EC',      
-           progress_meter_color = ('green', 'blue')   
-           button_color=None
-   )
+
 
     layout = [
                 [sg.Text('Please select a function', auto_size_text=True)],  
