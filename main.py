@@ -19,7 +19,7 @@ def MainMenu():
                 [sg.Text('2. Individual menu', auto_size_text=True)],
                 [sg.Button('1'), sg.Button('2'),sg.Quit()]]      
     # Show the Window to the user    
-    window = sg.Window('Main Menu', no_titlebar=True).Layout(layout)      
+    window = sg.Window('Main Menu', no_titlebar=False).Layout(layout)      
      # Event loop. Read buttons, make callbacks      
     while True:      
         # Read the Window    
