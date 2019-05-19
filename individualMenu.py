@@ -117,7 +117,8 @@ def ResultsMenu():
         results=teams.sort_values("_points_")
         data = results.values.tolist()               # read everything else into a list of rows
         header_list = results.iloc[0].tolist()   # Uses the first row (which should be column names) as columns names
-        data = results[1:].values.tolist()    
+        data = results[1:].values.tolist()  
+          
     except:
         sg.PopupError('Error reading file')
         sys.exit(69)
@@ -144,7 +145,7 @@ def CreateRankList():
         data = df.values.tolist()               # read everything else into a list of rows
         header_list = df.iloc[0].tolist()   # Uses the first row (which should be column names) as columns names
         data = df[1:].values.tolist()       # Drops the first row in the table (otherwise the header names and the first row will be the same)
-
+        
     except:
         sg.PopupError('Error reading file')
         sys.exit(69)

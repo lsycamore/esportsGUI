@@ -114,8 +114,10 @@ def ResultsMenu():
     try:
         df = pd.read_csv(dir, sep=',', engine='python', header=None)  # Header=None means you directly pass the columns names to the dataframe
         data = df.values.tolist()               # read everything else into a list of rows
-        header_list = df.iloc[0].tolist()   # Uses the first row (which should be column names) as columns names
-        data = df[1:].values.tolist()       # Drops the first row in the table (otherwise the header names and the first row will be the same)
+        data = df["_TeamMenu","_points_"]
+        #header_list = df.iloc[0].tolist()   # Uses the first row (which should be column names) as columns names
+        #data = df[1:].values.tolist()       # Drops the first row in the table (otherwise the header names and the first row will be the same)
+           
     except:
         sg.PopupError('Error reading file')
         sys.exit(69)
@@ -125,8 +127,6 @@ def ResultsMenu():
 
   
 
-    layout = [[sg.Table(values=data, headings=header_list, display_row_numbers=True,
-                            auto_size_columns=False, num_rows=min(25,len(data)))]]
 
     window = sg.Window('Table', grab_anywhere=False)
     event, values = window.Layout(layout).Read()
